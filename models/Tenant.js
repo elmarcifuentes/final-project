@@ -26,7 +26,7 @@ const TenantSchema = new mongoose.Schema({
         required: true
     }
 
-})
+});
 
 
 

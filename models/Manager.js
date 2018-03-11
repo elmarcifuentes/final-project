@@ -16,7 +16,7 @@ const ManagerSchema = new mongoose.Schema ({
         required: true
     }
 
-})
+});
 
 
 
