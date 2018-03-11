@@ -26,7 +26,15 @@ class Authctrl {
             email: req.body.email,
             salt: salt,
             hash: hash
-        }
+        };
+
+        const manager = {
+            FirstName: req.body.FirstName,
+            LastName:req.body.LastName,
+            email: req.body.email,
+            salt: salt,
+            hash: hash
+        };
 
         //insert into DB
         db.tenant.create(tenant)
@@ -34,7 +42,13 @@ class Authctrl {
             res.json({
                 msg: `Tenant : ${tenant.email} created.`
             })
-        })
+        });
+
+        db.manager.create(manager).then(resp => {
+            res.json({
+                msg: `Manager : ${manager.email} created.`
+            })
+        });
 
         //return response
 

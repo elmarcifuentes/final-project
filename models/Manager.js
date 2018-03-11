@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const ManagerSchema = new mongoose.Schema ({
     FirstName: {type: String},
     LastName: {type: String},
+    PhoneNumber: {type: String},
     Email: {
         type: String,
         unique: true,
