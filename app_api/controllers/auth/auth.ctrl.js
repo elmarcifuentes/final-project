@@ -1,4 +1,4 @@
-const db = require ("../../models");
+const db = require ("../../../models");
 const crypto = require ("crypto");
 class Authctrl {
     static login (req, res){
@@ -63,3 +63,6 @@ class Authctrl {
         return crypto.randomBytes(16).toString("hex");
     }
 }
+
+
+module.exports = Authctrl;
