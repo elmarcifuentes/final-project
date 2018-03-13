@@ -3,6 +3,19 @@ const crypto = require ("crypto");
 class Authctrl {
     static login (req, res){
         //parse body
+        db.tenant.findOne({"email": req.body.email})
+        .then( resp => {
+            const hashToValidate = Authctrl._generateHash(req.body.password, resp.hash);
+            if(hashToValidate === resp.hash){
+                //login success
+                res.send("good job");
+            }else{
+                //bad pass
+                res.send("oops");
+            }
+        }).catch(err => {
+            console.error(err);
+        });
 
         //check if hash is match 
 
@@ -12,10 +25,10 @@ class Authctrl {
 
     static register (req, res){
         //create salt
-        const salt = this._generateSalt();
+        const salt = Authctrl._generateSalt();
         
         //create hash
-        const hash = this._generateHash(req.body.password, salt);
+        const hash = Authctrl._generateHash(req.body.password, salt);
 
         //create tenant object
         const tenant = {
@@ -42,12 +55,18 @@ class Authctrl {
             res.json({
                 msg: `Tenant : ${tenant.email} created.`
             })
+        }).catch(err => {
+            res.status(400).json(err);
+            console.error(err);
         });
 
         db.manager.create(manager).then(resp => {
             res.json({
                 msg: `Manager : ${manager.email} created.`
             })
+        }).catch(err => {
+            res.status(400).json(err);
+            console.error(err);
         });
 
         //return response

@@ -3,6 +3,6 @@ const router = express.Router();
 const ctrl = require("../../app_api/controllers/auth/auth.ctrl")
 
 router.post("/register", ctrl.register);
-//router.post("/login");
+router.post("/login", ctrl.login);
 
 module.exports = router;
