@@ -6,7 +6,12 @@ const jwt = require("jsonwebtoken");
 class Authctrl {
     static login (req, res){
         
-        db.tenant.findOne({"email": req.body.email})
+        if(tenant){
+            const userType = tenant;
+        }else{
+            const userType = manager;
+        }
+        db.userType.findOne({"email": req.body.email})
         .then( resp => {
             console.log(resp);
             const hashToValidate = Authctrl._generateHash(req.body.password, resp.hash);
@@ -93,7 +98,8 @@ class Authctrl {
         const expTime = new Date();
         expTime.setDate(expTime.getDate() + 7);
         return jwt.sign({
-            email: user.email,
+            userID: tenant._id,
+            email: tenant.email,
             exp: parseInt(expTime.getTime()/1000)
         }, process.env.JWT_SECRET);
     }

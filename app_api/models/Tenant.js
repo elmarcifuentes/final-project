@@ -32,5 +32,5 @@ const tenantSchema = new mongoose.Schema({
 
 //this is the actual model that works with mongoose.
 //the schema is different, the schema is amore universal thing.
-var tenant = mongoose.model('tenant',tenantSchema);
-module.exports = tenant;
+const tenantModel = mongoose.model('tenant',tenantSchema);
+module.exports = tenantModel;
