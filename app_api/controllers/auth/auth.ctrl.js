@@ -1,20 +1,27 @@
 const db = require ("../../models");
 const crypto = require ("crypto");
+const jwt = require("jsonwebtoken");
+
+
 class Authctrl {
     static login (req, res){
-        //parse body
+        
         db.tenant.findOne({"email": req.body.email})
         .then( resp => {
+            console.log(resp);
             const hashToValidate = Authctrl._generateHash(req.body.password, resp.hash);
             if(hashToValidate === resp.hash){
                 //login success
                 res.send("good job");
+                const token = Authctrl._generateJWT(resp);
+                res.json({token: token});
             }else{
                 //bad pass
-                res.send("oops");
+                res.status(400).json("Incorrect Password")
             }
         }).catch(err => {
             console.error(err);
+            res.status(400).json(`Tenant: ${req.body.email} not found.`);
         });
 
         //check if hash is match 
@@ -80,6 +87,15 @@ class Authctrl {
 
     static _generateSalt() {
         return crypto.randomBytes(16).toString("hex");
+    }
+
+    static _generateJWT(tenant) {
+        const expTime = new Date();
+        expTime.setDate(expTime.getDate() + 7);
+        return jwt.sign({
+            email: user.email,
+            exp: parseInt(expTime.getTime()/1000)
+        }, process.env.JWT_SECRET);
     }
 }
 
