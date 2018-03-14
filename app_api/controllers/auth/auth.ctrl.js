@@ -1,4 +1,4 @@
-const db = require ("../../../models");
+const db = require ("../../models");
 const crypto = require ("crypto");
 class Authctrl {
     static login (req, res){
