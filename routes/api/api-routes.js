@@ -48,11 +48,18 @@ router.post('/tenant',function(req,res){
 
 
 router.get('/manager', function(req,res){
-    Manager.find().then()
-    console.log('get /manager')
+    console.log(req.headers._id)
+    var id = req.headers._id;
+
+    //Still neeed to get this to work.
+    db.Manager.find("5aa8915f1006827ad7dd60e8", function(err,result){
+        //if(err) console.error(err);
+        res.json(result)
+    })
 
     
-    
+    console.log('get /manager'+req.body._id)
+
 });
 
 
@@ -62,6 +69,15 @@ router.get('/tenant', function(req,res){
 
     
 });
+
+
+router.put('tenant', function(req,res){
+    console.log('put /tenant')
+})
+
+router.put('manager', function(req,res){
+    console.log('put /manager')
+})
 
 
 
