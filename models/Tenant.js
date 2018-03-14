@@ -31,8 +31,11 @@ var TenantSchema = new Schema({
     },
     address: {
         type: Object,
-        street_address
-
+        street_address: String,
+        city: String,
+        state: String,
+        zip_code: String,
+        //zip, like phone, might need to be a number and have proper validation for that. 
     },
 
     phone:{

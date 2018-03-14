@@ -31,7 +31,6 @@ var ManagerSchema = new Schema({
     },
     address: {
         type: Object,
-        street_address
 
     },
 
