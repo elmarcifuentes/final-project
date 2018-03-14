@@ -11,17 +11,14 @@ var TenantSchema = new Schema({
         unique: true
     },
     first_name: {
-        lowercase: true,
         required: true,
         type: String
     },
     middle_name:{
-        lowercase: true,
         required: false,
         type: String
     },
     last_name:{
-        lowercase: true,
         required: true,
         type: String
     },

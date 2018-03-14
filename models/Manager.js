@@ -11,21 +11,19 @@ var ManagerSchema = new Schema({
         unique: true
     },
     first_name: {
-        lowercase: true,
         required: true,
         type: String
     },
     middle_name:{
-        lowercase: true,
         required: false,
         type: String
     },
     last_name:{
-        lowercase: true,
         required: true,
         type: String
     },
     birth_date: {
+        required: false,
         type: Date,
 
     },
@@ -36,9 +34,14 @@ var ManagerSchema = new Schema({
 
     phone:{
         type: String,
-        validate: function(v){
-            //validate so that it must be a 10-digit number
+        validate:{
+            validator:function(v){
+                return /\d{3}-\d{3}-\d{4}/.test(v);
+            },
+            message: '{VALUE} is not a valid phone number!'
+
         }
+            //validate so that it must be a 10-digit number
     }
 
     //much, much more validation is required for each of these key values. 
