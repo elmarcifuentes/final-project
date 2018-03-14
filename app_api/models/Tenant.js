@@ -1,27 +1,27 @@
 const mongoose = require('mongoose');
-const TenantSchema = new mongoose.Schema({
-    FirstName: {type: String},
-    LastName: {type: String},
-    Email: {
+const tenantSchema = new mongoose.Schema({
+    firstName: {type: String},
+    lastName: {type: String},
+    email: {
         type: String,
         unique: true,
         required: true
     },
-    Address: {
+    address: {
         type: String,
         unique: true,
         required: true
     },
-    PhoneNumber: {
+    phoneNumber: {
         type: String,
         unique: true,
         required: true
     },
-    Salt: {
+    salt: {
         type: String,        
         required: true
     },
-    Hash: {
+    hash: {
         type: String,        
         required: true
     }
@@ -32,5 +32,5 @@ const TenantSchema = new mongoose.Schema({
 
 //this is the actual model that works with mongoose.
 //the schema is different, the schema is amore universal thing.
-var Tenant = mongoose.model('Tenant',TenantSchema);
-module.exports = Tenant;
+var tenant = mongoose.model('tenant',tenantSchema);
+module.exports = tenant;

@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
-const ManagerSchema = new mongoose.Schema ({
-    FirstName: {type: String},
-    LastName: {type: String},
-    PhoneNumber: {type: String},
-    Email: {
+const managerSchema = new mongoose.Schema ({
+    firstName: {type: String},
+    lastName: {type: String},
+    phoneNumber: {type: String},
+    email: {
         type: String,
         unique: true,
         required: true
     },
-    Salt: {
+    salt: {
         type: String,        
         required: true
     },
-    Hash: {
+    hash: {
         type: String,        
         required: true
     }
@@ -23,5 +23,5 @@ const ManagerSchema = new mongoose.Schema ({
 
 //this is the actual model that works with mongoose.
 //the schema is different, the schema is amore universal thing.
-var Manager = mongoose.model('Manager',ManagerSchema);
-module.exports = Manager;
+var manager = mongoose.model('manager', managerSchema);
+module.exports = manager;

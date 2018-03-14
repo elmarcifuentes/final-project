@@ -32,18 +32,18 @@ class Authctrl {
 
         //create tenant object
         const tenant = {
-            FirstName: req.body.FirstName,
-            LastName: req.body.LastName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             address: req.body.address,
-            PhoneNumber: req.body.PhoneNumber,
+            phoneNumber: req.body.phoneNumber,
             email: req.body.email,
             salt: salt,
             hash: hash
         };
 
         const manager = {
-            FirstName: req.body.FirstName,
-            LastName:req.body.LastName,
+            firstName: req.body.firstName,
+            lastName:req.body.lastName,
             email: req.body.email,
             salt: salt,
             hash: hash
@@ -75,7 +75,7 @@ class Authctrl {
     }
 
     static _generateHash(password, salt) {
-        return crypto.pbkdf2Sync(password, salt, 10000, 64, "sha512").toString("hex");
+        return crypto.pbkdf2Sync(password.toString("hex"), salt, 10000, 64, "sha512").toString("hex");
     }
 
     static _generateSalt() {
