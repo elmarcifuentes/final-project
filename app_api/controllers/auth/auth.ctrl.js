@@ -5,11 +5,11 @@ const jwt = require("jsonwebtoken");
 
 class Authctrl {
     static login (req, res){
-        
+        let userType = ""
         if(tenant){
-            const userType = tenant;
+            userType = "tenant";
         }else{
-            const userType = manager;
+            userType = "manager";
         }
         db.userType.findOne({"email": req.body.email})
         .then( resp => {
