@@ -1,7 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
 
-const db = require('../../models/')
+const db = require('../models/')
 
 
 
@@ -78,7 +78,6 @@ router.put('tenant', function(req,res){
 router.put('manager', function(req,res){
     console.log('put /manager')
 })
-
 
 
 
