@@ -5,10 +5,10 @@ var ManagerSchema = new Schema({
     
     
     
-    managerId:{
-        type: Schema.Types.ObjectId,
-        required: true,
-    },
+    // managerId:{
+    //     type: Schema.Types.ObjectId,
+    //     required: true,
+    // },
     //keep all names lower case for consistency
     username:{
         lowercase: true,

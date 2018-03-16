@@ -9,7 +9,7 @@ const htmlRoutes = require('./routes/htmlRoutes')
 const authRoutes = require('./routes/authRoutes')
 
 
-const db = require('./models')
+// const db = require('./models')
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +23,10 @@ if (process.env.NODE_ENV === "production") {
 app.use('/auth',authRoutes)
 app.use('/api',apiRoutes);
 app.use('/',htmlRoutes);
+
+
+
+
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB

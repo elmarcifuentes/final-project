@@ -48,26 +48,32 @@ router.post('/tenant',function(req,res){
 
 
 router.get('/manager', function(req,res){
-    console.log(req.params)
-    var id = req.headers._id;
+    console.log(req.query.id)
+    var id = req.query.id;
 
     //Still neeed to get this to work.
-    db.Manager.findById("5aa8915f1006827ad7dd60e8", function(err,result){
-        //if(err) console.error(err);
+    db.Manager.findById(id, function(err,result){
+        if(err) console.error(err);
         res.json(result)
     })
 
     
-    console.log('get /manager'+req.body._id)
+    console.log('get /manager with ObjectId:'+req.query.id)
 
 });
 
 
 router.get('/tenant', function(req,res){
-    console.log('get /tenant')
+    console.log(req.query.id)
+    var id = req.query.id;
+
+    db.Tenant.findById(id, function(err,result){
+        if(err) console.error(err);
+        res.json(result)
+    })
 
 
-    
+    console.log('get /tenant with ObjectId:'+req.query.id)
 });
 
 
