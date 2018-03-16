@@ -77,12 +77,50 @@ router.get('/tenant', function(req,res){
 });
 
 
-router.put('tenant', function(req,res){
-    console.log('put /tenant')
+router.put('/tenant', function(req,res){
+    //console.log(req.body)
+    var id = req.body.id;
+
+    db.Tenant.findByIdAndUpdate(id, { 
+        $set: {
+            username: req.body.username,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+        }},
+        {
+            upsert:true
+        },
+         function (err, user){
+          return res.json(true);
+        }
+      );
+
+    
+
+
+    console.log('put /tenant with ObjectId:'+id)
 })
 
-router.put('manager', function(req,res){
-    console.log('put /manager')
+router.put('/manager', function(req,res){
+    
+    var id = req.body.id;
+
+    db.Manager.findByIdAndUpdate(id, { 
+        $set: {
+            username: req.body.username,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+        }},
+        {
+            upsert:true
+        },
+         function (err, user){
+          return res.json(true);
+        }
+      );
+
+
+    console.log('put /manager with ObjectId: '+id)
 })
 
 
