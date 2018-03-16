@@ -9,6 +9,8 @@ var ManagerSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     required: true,
     // },
+
+
     //keep all names lower case for consistency
     username:{
         lowercase: true,
