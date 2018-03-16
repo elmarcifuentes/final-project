@@ -117,8 +117,8 @@ class Authctrl {
     };
 
     static _generateHash(password, salt) {
-        // console.log(password);
-        // console.log(salt);
+        console.log(password);
+        console.log(salt);
         return crypto.pbkdf2Sync(password.toString("hex"), salt, 10000, 64, "sha512").toString("hex");
     }
 
