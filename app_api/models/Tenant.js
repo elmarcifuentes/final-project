@@ -24,6 +24,10 @@ const tenantSchema = new mongoose.Schema({
     hash: {
         type: String,        
         required: true
+    },
+    accountStatus: {
+        type: String,
+        required: true
     }
 
 });

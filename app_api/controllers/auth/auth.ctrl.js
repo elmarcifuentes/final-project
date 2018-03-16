@@ -6,14 +6,24 @@ const jwt = require("jsonwebtoken");
 class Authctrl {
     static login (req, res){
         let userType = ""
-        if(tenant){
-            userType = "tenant";
-        }else{
-            userType = "manager";
-        }
-        db.userType.findOne({"email": req.body.email})
+        // if(tenant){
+        //     userType = "tenant";
+        // }else{
+        //     userType = "manager";
+        // }
+
+        
+
+        db.user.findOne({"email": req.body.email})
         .then( resp => {
             console.log(resp);
+            
+            console.log("this is hash:------------------");
+            
+            console.log(req.body);
+            console.log("this is hash:------------------");
+            console.log(req.body.password);
+            
             const hashToValidate = Authctrl._generateHash(req.body.password, resp.hash);
             if(hashToValidate === resp.hash){
                 //login success
@@ -26,8 +36,9 @@ class Authctrl {
             }
         }).catch(err => {
             console.error(err);
-            res.status(400).json(`Tenant: ${req.body.email} not found.`);
+            res.status(400).json(`User: ${req.body.email} not found.`);
         });
+
 
         //check if hash is match 
 
@@ -43,50 +54,71 @@ class Authctrl {
         const hash = Authctrl._generateHash(req.body.password, salt);
 
         //create tenant object
-        const tenant = {
+        // const tenant = {
+        //     firstName: req.body.firstName,
+        //     lastName: req.body.lastName,
+        //     address: req.body.address,
+        //     phoneNumber: req.body.phoneNumber,
+        //     email: req.body.email,
+        //     salt: salt,
+        //     hash: hash,
+        //     accountStatus: req.body.accountStatus
+        // };
+
+        // const manager = {
+        //     firstName: req.body.firstName,
+        //     lastName:req.body.lastName,
+        //     email: req.body.email,
+        //     salt: salt,
+        //     hash: hash,
+        //     accountStatus: req.body.accountStatus
+        // };
+
+        const user = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             address: req.body.address,
             phoneNumber: req.body.phoneNumber,
             email: req.body.email,
             salt: salt,
-            hash: hash
+            hash: hash,
+            accountStatus: req.body.accountStatus
         };
 
-        const manager = {
-            firstName: req.body.firstName,
-            lastName:req.body.lastName,
-            email: req.body.email,
-            salt: salt,
-            hash: hash
-        };
-
-        //insert into DB
-        db.tenant.create(tenant)
-        .then(resp => {
-            res.json({
-                msg: `Tenant : ${tenant.email} created.`
-            })
-        }).catch(err => {
-            res.status(400).json(err);
-            console.error(err);
-        });
-
-        db.manager.create(manager).then(resp => {
-            res.json({
-                msg: `Manager : ${manager.email} created.`
-            })
-        }).catch(err => {
-            res.status(400).json(err);
-            console.error(err);
-        });
-
-        //return response
+        // if (tenant.accountStatus === "tenant" ){
+            console.log(`I'm a ${user.accountStatus}`)
+            //insert into DB
+            db.user.create(user)
+            .then(resp => {
+                res.json({
+                    msg: `User : ${user.email} created.`
+                })
+            }).catch(err => {
+                res.status(400).json(err);
+                console.error(err);
+            });
+            
+            //return response
+        // }
+        // else{
+        //     console.log(`I'm a ${manager.accountStatus}`)           
+        //     db.manager.create(manager).then(resp => {
+        //         res.json({
+        //             msg: `Manager : ${manager.email} created.`
+        //         })
+        //     }).catch(err => {
+        //         res.status(400).json(err);
+        //         console.error(err);
+        //     });
+            
+        // };
 
 
-    }
+    };
 
     static _generateHash(password, salt) {
+        // console.log(password);
+        // console.log(salt);
         return crypto.pbkdf2Sync(password.toString("hex"), salt, 10000, 64, "sha512").toString("hex");
     }
 
@@ -94,12 +126,12 @@ class Authctrl {
         return crypto.randomBytes(16).toString("hex");
     }
 
-    static _generateJWT(tenant) {
+    static _generateJWT(user) {
         const expTime = new Date();
         expTime.setDate(expTime.getDate() + 7);
         return jwt.sign({
-            userID: tenant._id,
-            email: tenant.email,
+            userID: user._id,
+            email: user.email,
             exp: parseInt(expTime.getTime()/1000)
         }, process.env.JWT_SECRET);
     }
