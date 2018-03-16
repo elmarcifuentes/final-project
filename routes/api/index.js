@@ -13,4 +13,6 @@ const router = require("express").Router();
 
 //Do regular api calls go here?
 //Why are there two index.js in /routes?
+
+console.log('')
 module.exports = router;

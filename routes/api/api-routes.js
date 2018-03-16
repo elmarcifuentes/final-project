@@ -48,11 +48,11 @@ router.post('/tenant',function(req,res){
 
 
 router.get('/manager', function(req,res){
-    console.log(req.headers._id)
+    console.log(req.params)
     var id = req.headers._id;
 
     //Still neeed to get this to work.
-    db.Manager.find("5aa8915f1006827ad7dd60e8", function(err,result){
+    db.Manager.findById("5aa8915f1006827ad7dd60e8", function(err,result){
         //if(err) console.error(err);
         res.json(result)
     })

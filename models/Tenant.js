@@ -3,6 +3,13 @@ var Schema = mongoose.Schema;
 
 var TenantSchema = new Schema({
 
+    
+    
+    
+    tenantId:{
+        type: Schema.Types.ObjectId,
+        required: true,
+    },
     //keep all names lower case for consistency
     username:{
         lowercase: true,
