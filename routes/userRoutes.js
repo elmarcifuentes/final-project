@@ -76,6 +76,12 @@ router.put('/update', function(req,res){
 
 router.delete('/delete', function(req,res){
 
+    var id = req.body.id;
+    db.User.findByIdAndRemove(id, function(request,response){
+        res.json(response)
+        
+    })
+
 
     console.log('/delete ObjectId')
 })
