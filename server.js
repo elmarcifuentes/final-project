@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const apiRoutes = require('./routes/apiRoutes')
+//const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 
 // ADD ALL ROUTES
 app.use('/auth',authRoutes)
-app.use('/api',apiRoutes);
+//app.use('/api',apiRoutes);
 app.use('/',htmlRoutes);
 app.use('/user',userRoutes)
 

@@ -9,15 +9,16 @@ const db = require('../models/')
 //Creats a new manager
 router.post('/create',function(req,res){
     console.log('post /user')
-    var newManager = new db.Manager({
+    var newUser = new db.User({
 
         username: req.body.username,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        accountStatus: req.body.accountStatus
     });
 
 
-    newManager.save(function(err, response){
+    newUser.save(function(err, response){
         if (err) console.error(err);
         res.json(response);
     })

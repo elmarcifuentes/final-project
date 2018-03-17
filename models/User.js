@@ -35,15 +35,15 @@ var UserSchema = new Schema({
 
     },
     primaryAddress: {
-        required: true,
+        required: false,
         type: Object,
-        streetddress: String,
+        streetAddress: String,
         city: String,
         state: String,
         zipCode: String,
         addressType:{
             type: String,
-            required: true,
+            required: false,
             enum:[
                 'mailing','billing','work'
             ],
