@@ -1,7 +1,7 @@
 module.exports = {
-    
-    Manager: require("./Manager"),
-    Tenant: require("./Tenant")
+    User: require('./User'),
+    // Manager: require("./Manager"),
+    // Tenant: require("./Tenant")
 
 
 

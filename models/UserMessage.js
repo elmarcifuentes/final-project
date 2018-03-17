@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 
 
-var UserChat = new Schema({
+var UserMessage = new Schema({
     
 
 
