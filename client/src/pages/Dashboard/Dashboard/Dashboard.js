@@ -5,7 +5,7 @@ import Documents from '../Documents/Documents';
 import Announcements from '../Announcements/Announcements';
 import Chat from '../Chat/Chat';
 
-class Tenant extends React.Component {
+class Dashboard extends React.Component {
     render() {
         return (
             <div className="main-container">
@@ -13,7 +13,7 @@ class Tenant extends React.Component {
                 <div className="container">
                     <div className="row justify-content-between align-items-center">
                         <div className="col-auto">
-                            <h1 className="h2">Tenant Dashboard</h1>
+                            <h1 className="h2">Tenant/Manager Dashboard</h1>
                         </div>
                         <div className="col-auto text-right">
                             <a href="/" className="btn btn-danger">Sign Out</a>
@@ -62,4 +62,4 @@ class Tenant extends React.Component {
     }
 };
 
-export default Tenant;
+export default Dashboard;

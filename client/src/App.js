@@ -4,8 +4,7 @@ import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
 import SignIn from './pages/SignIn/SignIn';
-import Tenant from './pages/Tenant/Tenant';
-import Manager from './pages/Manager/Manager';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Footer from './components/Footer/Footer';
 
 const Main = () => (
@@ -14,8 +13,7 @@ const Main = () => (
       <Route exact path='/' component={Home}/>
       <Route path='/register' component={Register}/>
       <Route path='/signin' component={SignIn}/>
-      <Route path='/tenant' component={Tenant}/>
-      <Route path='/manager' component={Manager}/>
+      <Route path='/dashboard' component={Dashboard}/>
     </Switch>
   </main>
 );

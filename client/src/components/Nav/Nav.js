@@ -17,10 +17,7 @@ class Nav extends React.Component {
                 <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a href="/tenant" className="nav-link">Tenant</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="/manager" className="nav-link">Manager</a>
+                            <a href="/dashboard" className="nav-link">Dashboard</a>
                         </li>
                         {/* <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/" id="componentsDropdown" role="button" data-toggle="dropdown">Test Link</a>
