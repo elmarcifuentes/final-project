@@ -1,20 +1,21 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
 
 
 
-var UserConversationSchema = new Schema({
+const UserConversationSchema = new Schema({
+    participants:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+    ],
     conversationId: {
         type: Schema.Types.ObjectId,
-        required:true,
+        required: true,
     },
-    
-
-    
-
-
 
 
 });

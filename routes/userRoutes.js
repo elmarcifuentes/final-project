@@ -1,7 +1,8 @@
 const path = require("path");
 const router = require("express").Router();
+const db = require('../models/');
 
-const db = require('../models/')
+
 
 
 
@@ -33,11 +34,12 @@ router.get('/read', function(req,res){
     console.log(req.query.id)
     var id = req.query.id;
 
-    db.Tenant.findById(id, function(err,result){
+
+
+    db.User.findById(id, function(err,result){
         if(err) console.error(err);
         res.json(result)
     })
-
 
     console.log('get /user with ObjectId:'+req.query.id)
 });
@@ -49,17 +51,19 @@ router.put('/update', function(req,res){
     
     var id = req.body.id;
 
-    db.Manager.findByIdAndUpdate(id, { 
+    db.User.findByIdAndUpdate(id, { 
         $set: {
             username: req.body.username,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            accountStatus: req.body.accountStatus,
         }},
         {
             upsert:true
         },
-         function (err, user){
-          return res.json(true);
+        function (err, user){
+          if(err) console.error(err);
+          return res.json(user);
         }
       );
 
@@ -71,6 +75,12 @@ router.put('/update', function(req,res){
 
 
 router.delete('/delete', function(req,res){
+
+    var id = req.body.id;
+    db.User.findByIdAndRemove(id, function(request,response){
+        res.json(response)
+        
+    })
 
 
     console.log('/delete ObjectId')
