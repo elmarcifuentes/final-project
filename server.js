@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3001;
 const htmlRoutes = require('./routes/htmlRoutes')
 const userRoutes = require('./routes/userRoutes')
 const authRoutes = require('./routes/authRoutes')
+const chatRoutes = require('./routes/chatRoutes')
 
 
 // const db = require('./models')
@@ -21,11 +22,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // ADD ALL ROUTES
-app.use('/auth',authRoutes)
+app.use('/auth',authRoutes);
 //app.use('/api',apiRoutes);
 app.use('/',htmlRoutes);
-app.use('/user',userRoutes)
-
+app.use('/user',userRoutes);
+app.use('/chat',chatRoutes);
 
 
 

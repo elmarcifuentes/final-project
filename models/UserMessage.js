@@ -18,15 +18,10 @@ const UserMessageSchema = new Schema({
     author:{
         type: Schema.Types.ObjectId,
         required:true,
-    },
-    timestamps:[
-
-    ],
-    
-
-
-
-})
+    }},
+    {
+        timestamps: true,
+    })
 
 
 
