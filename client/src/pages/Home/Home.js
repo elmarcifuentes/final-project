@@ -1,10 +1,11 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
+import Image from '../../assets/img/header.jpg'
 
 
 const Home = () => (
 <section className="bg-dark space-lg">
-    <img alt="" src="" className="bg-image" />
+    <img alt="" src={Image} className="bg-image" />
     <div className="container">
         <div className="row align-items-center justify-content-between">
             <div className="col-12 col-md-6 col-lg-5 section-intro">
