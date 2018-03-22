@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import Nav from './components/Nav/index';
+import Home from './pages/Home/index';
+import Register from './pages/Register/index';
+import SignIn from './pages/SignIn/index';
+import Dashboard from './pages/Dashboard/index';
+import Footer from './components/Footer/index';
+
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path='/' component={Home}/>
+      <Route path='/register' component={Register}/>
+      <Route path='/signin' component={SignIn}/>
+      <Route path='/dashboard' component={Dashboard}/>
+    </Switch>
+  </main>
+);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+      <Nav/>
+      <Main />
+      <Footer/>
       </div>
     );
   }
