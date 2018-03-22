@@ -14,7 +14,7 @@ const db = require('../models/')
 //This needs a lot of work because it has to utilize an authetnticated user
 router.get('/getConversations', function(req,res){
     console.log('/getConversations called')
-    //console.log(req.user)
+//console.log(req.user)
     //somehow, this call needs to be able to get the user's id. However the authentication works, this must work with it.
     var id = req.query.id;
     
