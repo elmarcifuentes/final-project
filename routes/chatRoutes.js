@@ -88,10 +88,38 @@ router.get('/:conversationId', function(req,res){
 //conversations
 router.post('/newConversation/:recipient', function(request,response){
     console.log('post /newConversation/:recipient called OR createConversation')
-    console.log(request.params)
+    console.log(request.params.recipient)
+
+
+    //supposedly we grab the JWT instead,
+    //but I am using fakeUserTokens for now to represent an authenticated user    
+
+
+    let fakeUserTokenVal = request.body.fakeUserToken;
+    console.log(fakeUserTokenVal)
+    if(fakeUserTokenVal){
+
+      db.User.find({
+        fakeUserToken: fakeUserTokenVal
+      }).exec(function(err, user){
+        if(err){
+          response.send({error:err});
+        }
+
+        console.log(user)
+        
+      })
+      console.log(request.body.fakeUserToken)
+    }
+    else{
+
+      console.log('missing fakeUserToken')
+    }
     
     //logic for making sure a valid recipient is in params FIRST
 
+
+    //I believe that there is a best usage version of saying if (the user specifically added a recipient parameter in the url)
     if(!request.params.recipient){
       response.status(442).send({error: 'WE NEED valid recipient(userId)'})
       //not sure about the next but this was the return used in the example.
