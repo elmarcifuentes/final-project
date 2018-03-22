@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomeForm = () => (
+const RegisterForm = () => (
 <div className="card">
     <div className="card-body">
         <form>
@@ -30,4 +30,4 @@ const HomeForm = () => (
 </div>
 )
 
-export default HomeForm;
+export default RegisterForm;

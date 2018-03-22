@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
-import Nav from './components/Nav/Nav';
-import Home from './pages/Home/Home';
-import Register from './pages/Register/Register';
-import SignIn from './pages/SignIn/SignIn';
-import Dashboard from './pages/Dashboard/Dashboard';
-import Footer from './components/Footer/Footer';
+import Nav from './components/Nav/index';
+import Home from './pages/Home/index';
+import Register from './pages/Register/index';
+import SignIn from './pages/SignIn/index';
+import Dashboard from './pages/Dashboard/index';
+import Footer from './components/Footer/index';
 
 const Main = () => (
   <main>
