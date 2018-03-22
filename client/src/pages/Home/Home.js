@@ -1,8 +1,8 @@
 import React from 'react';
-import HomeForm from './HomeForm';
+import RegisterForm from './RegisterForm';
 
 
-const Landing = () => (
+const Home = () => (
 <section className="bg-dark space-lg">
     <img alt="" src="" className="bg-image" />
     <div className="container">
@@ -15,7 +15,7 @@ const Landing = () => (
             </div>
             {/* Landing Page Form */}
             <div className="col-12 col-md-6 col-lg-5">
-                <HomeForm />
+                <RegisterForm />
             </div>
             {/* Landing Page Form End*/}
         </div>
@@ -23,4 +23,4 @@ const Landing = () => (
 </section>
   )
   
-  export default Landing;
+  export default Home;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from '../Profile/Profile';
+import Profile from '../Profile/index';
 import Billing from '../Billing/Billing';
 import Documents from '../Documents/Documents';
 import Announcements from '../Announcements/Announcements';
