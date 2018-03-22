@@ -24,7 +24,7 @@ const RegisterForm = () => (
                     </label>
                 </div>
             </div>
-            <button type="submit" className="btn btn-lg btn-danger btn-block">Sign up for Wingman</button>
+            <button type="submit" className="btn btn-lg btn-danger btn-block">NewsFlash Sign Up</button>
         </form>
     </div>
 </div>
