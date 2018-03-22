@@ -1,9 +1,9 @@
 import React from 'react';
-import Profile from '../Profile/index';
-import Billing from '../Billing/Billing';
-import Documents from '../Documents/Documents';
-import Announcements from '../Announcements/Announcements';
-import Chat from '../Chat/Chat';
+import Profile from '../Dashboard/Profile/index';
+import Billing from '../Dashboard/Billing/Billing';
+import Documents from '../Dashboard/Documents/Documents';
+import Announcements from '../Dashboard/Announcements/index';
+import Chat from '../Dashboard/Chat/Chat';
 
 const Dashboard = () => (
     <div className="main-container">
