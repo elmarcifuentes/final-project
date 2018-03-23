@@ -9,15 +9,25 @@ const UserMessageSchema = new Schema({
     
     conversationId:{
         type: Schema.Types.ObjectId,
-        required: true
+        required: false
     },
     body:{
         type: String,
         required:true
     },
     author:{
-        type: Schema.Types.ObjectId,
-        required:true,
+        authorId: {
+            type: Schema.Types.ObjectId,
+            required: true,
+        },
+        firstName: {
+            type: String,
+            required: true,
+        },
+        lastName:{
+            type: String,
+            required: true,
+        },
     }},
     {
         timestamps: true,
