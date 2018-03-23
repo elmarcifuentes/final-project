@@ -1,13 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const routes = require("./app_api/routes/index.routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//const apiRoutes = require('./routes/apiRoutes')
+const htmlRoutes = require('./routes/htmlRoutes')
+const userRoutes = require('./routes/userRoutes')
+const authRoutes = require('./routes/authRoutes')
+const chatRoutes = require('./routes/chatRoutes')
 
 
-const db = require('./app_api/models')
+// const db = require('./models')
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,8 +21,14 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Add routes, both API and view
-app.use(routes);
+// ADD ALL ROUTES
+app.use('/auth',authRoutes);
+//app.use('/api',apiRoutes);
+app.use('/',htmlRoutes);
+app.use('/user',userRoutes);
+app.use('/chat',chatRoutes);
+
+
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
