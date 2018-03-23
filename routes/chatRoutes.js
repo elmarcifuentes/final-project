@@ -59,19 +59,87 @@ router.get('/:userId', function(request,response){
 
 //Actually use the parameters in the url for retrieving the speicific single conversation
 //
-router.get('/:conversationId', function(req,res){
-    console.log('/getConversation called')
-    console.log(req)
+router.get('/conversation/:conversationId', function(request,response){
+
+    var conversationId = request.params.conversationId.split('=')[1];
+    console.log('conversationId: '+conversationId)
+    
+
+    db.UserConversation.findById(conversationId,function(error,result){
+
+      if(error){
+        console.error(error);
+        response.status(400).json({error:error})
+      } else {
+
+        console.log(result)
+        
+        db.UserMessage.find({
+          conversationId:mongoose.Types.ObjectId(conversationId)
+        }).then(function(messageResults){
+          
+          console.log('messageResults: '+messageResults)
+          response.json(messageResults)
+        }
+        //grab all messages that have this
+        
+        
+      )}
+      
+      //console.log(response);
+    })
+    
+    
+  })
+  
+  
+  //Be able to reply to what some fool said to you.
+  //Requires, body, senderId and recipientId
+  //
+  //
+  router.post('/reply/:conversationId', function(request,response){
+  
+    console.log('POST /chat/reply/:conversationId CALLED')
+    conversationId = request.params.conversationId.split('=')[1];
+    console.log(conversationId);
+  
+    db.UserMessage.create({
+    
+      conversationId:mongoose.Types.ObjectId(conversationId),
+      body:request.body.messageBody,
+      author:{
+          authorId:request.body.authorId,
+          firstName: request.body.firstName,
+          lastName: request.body.lastName,
+      }},
+      {
+          timestamps: true,
+      }).then(function(result,error){
+        if(error){
+          console.error(error);
+          response.json({error:error});
+        } else{
+
+          response.json(result)
+
+        }
 
 
+      })
+    //Grab the conversation, this is why GET /:conversationId is first
+  
+  
+  
+  
+  
+  
+  });
 
-})
 
-
-
-
-
-
+  
+  
+  
+  
 //Make a conversation, a function that utilizes the message objects to build
 //conversations
 router.post('/newConversation/:recipient', async function(request,response){
@@ -149,22 +217,6 @@ router.post('/newConversation/:recipient', async function(request,response){
 
 
 
-//Be able to reply to what some fool said to you.
-//Requires, body, senderId and recipientId
-//
-//
-router.post('/reply/:recipientId', function(request,response){
-
-  console.log('POST /chat/reply/:recipientId CALLED')
-  recipientId = request.params.recipientId;
-  console.log(recipientId);
-
-
-
-
-
-
-});
 
 
 
