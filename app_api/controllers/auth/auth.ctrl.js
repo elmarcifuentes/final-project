@@ -16,15 +16,15 @@ class Authctrl {
 
         db.user.findOne({"email": req.body.email})
         .then( resp => {
-            console.log(resp);
+            // console.log(resp);
             
-            console.log("this is hash:------------------");
+            // console.log("this is hash:------------------");
             
-            console.log(req.body);
-            console.log("this is hash:------------------");
-            console.log(req.body.password);
+            // console.log(req.body);
+            // console.log("this is hash:------------------");
+            // console.log(req.body.password);
             
-            const hashToValidate = Authctrl._generateHash(req.body.password, resp.hash);
+            const hashToValidate = Authctrl._generateHash(req.body.password, resp.salt);
             if(hashToValidate === resp.hash){
                 //login success
                 res.send("good job");
@@ -122,7 +122,7 @@ class Authctrl {
         // console.log(password.toString("hex"));
         // console.log(crypto.pbkdf2Sync(password.toString("hex"), salt, 10000, 64, "sha512").toString("hex"));
         
-        return crypto.pbkdf2Sync(password.toString("hex"), salt, 10000, 64, "sha512").toString("hex");
+        return crypto.pbkdf2Sync(password, salt, 10000, 64, "sha512").toString("hex");
     }
 
     static _generateSalt() {
