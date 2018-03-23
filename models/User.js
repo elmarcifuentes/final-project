@@ -62,7 +62,14 @@ var UserSchema = new Schema({
         }
     },
     fakeUserToken:{},
-
+    salt: {
+        type: String,        
+        required: true
+    },
+    hash: {
+        type: String,        
+        required: true
+    },
 
     profileImage:''
 
