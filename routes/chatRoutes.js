@@ -42,33 +42,13 @@ router.get('/:userId', function(request,response){
     }, function(err,res){
         if (err) {
           console.error(err);
+          res.status(500).json({error:err})
         }
-
-        else 
-        console.log(res)
-
-        response.json(res)
-        let fullConversations = [];
-      // res.forEach(function(conversation) {
-      //   db.UserMessage.find({ 'conversationId': response._id })
-      //     .sort('-createdAt')
-      //     .limit(1)
-      //     .populate({
-      //       path: "author",
-      //       select: "profile.firstName profile.lastName"
-      //     })
-      //     .exec(function(err, message) {
-      //       if (err) {
-      //         res.send({ error: err });
-      //         return next(err);
-      //       }
-      //       fullConversations.push(message);
-      //       if(fullConversations.length === response.length) {
-      //         return res.status(200).json({ response: fullConversations });
-      //       }
-      //     });
-      // });
-            //res.json(response)
+        else {
+          console.log(res)
+          response.json(res)
+          let fullConversations = [];
+        }
     })
 })
 
@@ -162,7 +142,29 @@ router.post('/newConversation/:recipient', async function(request,response){
 
     }
       
-})    
+})
+
+
+
+
+
+
+//Be able to reply to what some fool said to you.
+//Requires, body, senderId and recipientId
+//
+//
+router.post('/reply/:recipientId', function(request,response){
+
+  console.log('POST /chat/reply/:recipientId CALLED')
+  recipientId = request.params.recipientId;
+  console.log(recipientId);
+
+
+
+
+
+
+});
 
 
 
