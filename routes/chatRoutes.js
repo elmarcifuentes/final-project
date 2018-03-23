@@ -77,7 +77,16 @@ router.get('/conversation/:conversationId', function(request,response){
         db.UserMessage.find({
           conversationId:mongoose.Types.ObjectId(conversationId)
         }).then(function(messageResults){
-          
+
+
+          //copy.paste  from stackoverflow for sorting by createdAt date
+          //Array begins with oldest, then goes to newest message.
+          messageResults.sort(function(a, b) {
+            var dateA = new Date(a.createdAt), dateB = new Date(b.createdAt);
+            return dateA - dateB;
+        });
+
+
           console.log('messageResults: '+messageResults)
           response.json(messageResults)
         }
@@ -102,37 +111,42 @@ router.get('/conversation/:conversationId', function(request,response){
     console.log('POST /chat/reply/:conversationId CALLED')
     conversationId = request.params.conversationId.split('=')[1];
     console.log(conversationId);
+
+    if (!conversationId){
+
+      response.status(400).json({error: 'null conversationId'})
+
+    }else{
+
+      console.log(request.body)
   
     db.UserMessage.create({
     
       conversationId:mongoose.Types.ObjectId(conversationId),
       body:request.body.messageBody,
       author:{
-          authorId:request.body.authorId,
+          authorId:mongoose.Types.ObjectId(request.body.authorId),
           firstName: request.body.firstName,
           lastName: request.body.lastName,
-      }},
+      }
+    },
       {
           timestamps: true,
-      }).then(function(result,error){
-        if(error){
-          console.error(error);
-          response.json({error:error});
-        } else{
-
+      }, function(result){
+        
+          
+          console.log(result)
           response.json(result)
 
-        }
 
-
-      })
+      });
     //Grab the conversation, this is why GET /:conversationId is first
   
   
   
   
   
-  
+    }
   });
 
 
