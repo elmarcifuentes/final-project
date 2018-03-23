@@ -29,21 +29,24 @@ const authRoutes = require('./authRoutes');
 
 
 //This needs a lot of work because it has to utilize an authetnticated user
-router.get('/:userId', function(req,res){
+router.get('/:userId', function(request,response){
     console.log('/chat/userId OR getConversations called, retrieving list of conversations given userId')
     
-    
-    console.log(req.params.userId)
+    var userId = request.params.userId
+    console.log(userId)
     //somehow, this call needs to be able to get the user's id. However the authentication works, this must work with it.
-    var id = req.query.id;
     
     db.UserConversation.find({
-        //
-    }, function(err,response){
-        if (err) console.error(err);
+        participants:[userId]
+    }, function(err,res){
+        if (err) {
+          console.error(err);
+        }
 
+        else 
+        console.log(res)
         let fullConversations = [];
-      response.forEach(function(conversation) {
+      res.forEach(function(conversation) {
         db.UserMessage.find({ 'conversationId': response._id })
           .sort('-createdAt')
           .limit(1)
@@ -152,21 +155,11 @@ router.post('/newConversation/:recipient', async function(request,response){
 
         })
 
-       
+      });
 
-        // newMessage.save(function(err,messageResult){
-        //   if (err){
-        //     console.error('newMessage.save error: '+err);
-        //     response.json(err)
-        // } else{
-        //   response.json(messageResult)
-        // }
-
-        });
-
-      }
+    }
       
-      })    
+})    
 
 
 
