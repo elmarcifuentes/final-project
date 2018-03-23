@@ -1,3 +1,5 @@
+
+const mongoose = require("mongoose");
 const path = require("path");
 const router = require("express").Router();
 const db = require('../models/');
@@ -114,34 +116,57 @@ router.post('/newConversation/:recipient', async function(request,response){
       console.log('id of Sender: '+senderRequest._id)
       console.log('id of Recipient: '+recipientRequest._id)
 
+      //If no conversation found, make a new one
+      //There is no if, this entire post function should only run if that is the case
       db.UserConversation.create({
-        participants: [senderId,recipientId]
-      }, function(err, result){
-  
-        response.json(result)
-      })
-    }
-    
+          participants: [senderId,recipientId]
+      }).then(function(conversation,err){
+        if(err){
+          response.json({error:err})
+          console.error(err)
 
+        }
+          console.log('conversation created with a conversationId: '+conversation._id)
+        //response.json({conversationId: conversation._id})
 
-    //I believe that there is a best usage version of saying if (the user specifically added a recipient parameter in the url)
-    // if(!request.params.recipient){
-    //   response.status(442).send({error: 'WE NEED valid recipient(userId)'})
-    //   //not sure about the next but this was the return used in the example.
-    //   return next;
-    // }
+        
+        //create the user message
+        db.UserMessage.create({
+            conversationId: conversation._id,
+            body:request.body.body,
+            author:{
+              authorId:senderRequest._id,
+              firstName: senderRequest.firstName,
+              lastName: senderRequest.lastName,
+            }
+        }).then(function(message,err){
 
+          if (err){
 
-    //same idea but for the body message. This serves as the origin for recipient
-    //if(!req.body.messageBody){}
+            console.error('newMessage.save error: '+err);
+            response.json(err)
+          } else{ 
+            
+            response.json(message)
+          }
 
+        })
 
+       
 
-    
+        // newMessage.save(function(err,messageResult){
+        //   if (err){
+        //     console.error('newMessage.save error: '+err);
+        //     response.json(err)
+        // } else{
+        //   response.json(messageResult)
+        // }
 
+        });
 
-
-})
+      }
+      
+      })    
 
 
 
