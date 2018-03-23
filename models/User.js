@@ -60,7 +60,11 @@ var UserSchema = new Schema({
             },
             message: '{VALUE} is not a valid phone number!'
         }
-    }
+    },
+    fakeUserToken:{},
+
+
+    profileImage:''
 
     //much, much more validation is required for each of these key values. 
     //require first and last names
