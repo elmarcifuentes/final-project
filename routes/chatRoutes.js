@@ -86,45 +86,50 @@ router.get('/:conversationId', function(req,res){
 
 //Make a conversation, a function that utilizes the message objects to build
 //conversations
-router.post('/newConversation/:recipient', function(request,response){
+router.post('/newConversation/:recipient', async function(request,response){
     console.log('post /newConversation/:recipient called OR createConversation')
-    console.log(request.params.recipient)
 
 
+
+    var recipientId = request.params.recipient.split('=')[1];
+    console.log('request.params.recipient: '+recipientId);
     //supposedly we grab the JWT instead,
     //but I am using fakeUserTokens for now to represent an authenticated user    
+    var senderId = request.body.senderId;
+    console.log('senderId: '+senderId)
 
 
-    let fakeUserTokenVal = request.body.fakeUserToken;
-    console.log(fakeUserTokenVal)
-    if(fakeUserTokenVal){
 
-      db.User.find({
-        fakeUserToken: fakeUserTokenVal
-      }).exec(function(err, user){
-        if(err){
-          response.send({error:err});
-        }
+    //make sure that the there exists these two
+    if(!senderId && !recipientId){
 
-        console.log(user)
-        
-      })
-      console.log(request.body.fakeUserToken)
+      response.status(400).json({message:'senderId or recipient are null'})
     }
     else{
+      //Grabs sender user JSON, by the senderId given in the body
+      //Grabs recipient user JSON, by recipientId given in URL params
+      const recipientRequest = await db.User.findById(recipientId);
+      const senderRequest = await db.User.findById(senderId)
+      
+      console.log('id of Sender: '+senderRequest._id)
+      console.log('id of Recipient: '+recipientRequest._id)
 
-      console.log('missing fakeUserToken')
+      db.UserConversation.create({
+        participants: [senderId,recipientId]
+      }, function(err, result){
+  
+        response.json(result)
+      })
     }
     
-    //logic for making sure a valid recipient is in params FIRST
 
 
     //I believe that there is a best usage version of saying if (the user specifically added a recipient parameter in the url)
-    if(!request.params.recipient){
-      response.status(442).send({error: 'WE NEED valid recipient(userId)'})
-      //not sure about the next but this was the return used in the example.
-      return next;
-    }
+    // if(!request.params.recipient){
+    //   response.status(442).send({error: 'WE NEED valid recipient(userId)'})
+    //   //not sure about the next but this was the return used in the example.
+    //   return next;
+    // }
 
 
     //same idea but for the body message. This serves as the origin for recipient
@@ -132,16 +137,9 @@ router.post('/newConversation/:recipient', function(request,response){
 
 
 
-    db.UserConversation.create()
-
-    if(true){
+    
 
 
-      response.json({
-
-        message:'ITS WORKING'
-      })
-    }
 
 })
 

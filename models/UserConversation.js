@@ -14,7 +14,7 @@ const UserConversationSchema = new Schema({
     ],
     conversationId: {
         type: Schema.Types.ObjectId,
-        required: true,
+        //required: true,
     },
 
 
