@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const path = require("path");
 const router = require("express").Router();
@@ -32,12 +31,14 @@ const authRoutes = require('./authRoutes');
 router.get('/:userId', function(request,response){
     console.log('/chat/userId OR getConversations called, retrieving list of conversations given userId')
     
-    var userId = request.params.userId
-    console.log(userId)
+    var userId = request.params.userId.split('=')
+    userId = userId[1]
+    
+    console.log('userId: '+userId)
     //somehow, this call needs to be able to get the user's id. However the authentication works, this must work with it.
     
     db.UserConversation.find({
-        participants:[userId]
+        participants: mongoose.Types.ObjectId(userId)
     }, function(err,res){
         if (err) {
           console.error(err);
@@ -45,26 +46,28 @@ router.get('/:userId', function(request,response){
 
         else 
         console.log(res)
+
+        response.json(res)
         let fullConversations = [];
-      res.forEach(function(conversation) {
-        db.UserMessage.find({ 'conversationId': response._id })
-          .sort('-createdAt')
-          .limit(1)
-          .populate({
-            path: "author",
-            select: "profile.firstName profile.lastName"
-          })
-          .exec(function(err, message) {
-            if (err) {
-              res.send({ error: err });
-              return next(err);
-            }
-            fullConversations.push(message);
-            if(fullConversations.length === response.length) {
-              return res.status(200).json({ response: fullConversations });
-            }
-          });
-      });
+      // res.forEach(function(conversation) {
+      //   db.UserMessage.find({ 'conversationId': response._id })
+      //     .sort('-createdAt')
+      //     .limit(1)
+      //     .populate({
+      //       path: "author",
+      //       select: "profile.firstName profile.lastName"
+      //     })
+      //     .exec(function(err, message) {
+      //       if (err) {
+      //         res.send({ error: err });
+      //         return next(err);
+      //       }
+      //       fullConversations.push(message);
+      //       if(fullConversations.length === response.length) {
+      //         return res.status(200).json({ response: fullConversations });
+      //       }
+      //     });
+      // });
             //res.json(response)
     })
 })
