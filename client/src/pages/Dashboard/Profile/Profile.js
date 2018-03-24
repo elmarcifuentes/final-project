@@ -20,7 +20,14 @@ class Profile extends React.Component {
 
     componentDidMount(){
         console.log('componentDidMount')
-        axios.get('/user/read')
+        axios.get('/user/read/',{
+            params: {
+                userId:'5ab364ef5eef856dca42d854'
+            },
+            proxy:{
+                port: 3001
+            }
+        })
             .then( response =>{
                 console.log(response)
             })
