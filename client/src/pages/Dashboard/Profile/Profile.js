@@ -22,9 +22,11 @@ class Profile extends React.Component {
         console.log('componentDidMount')
         axios.get('/user/read/',{
             params: {
+                //Hard-coded to test for ALICE user
                 userId:'5ab364ef5eef856dca42d854'
             },
             proxy:{
+                host:'localhost',
                 port: 3001
             }
         })
