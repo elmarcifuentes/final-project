@@ -32,6 +32,7 @@ var UserSchema = new Schema({
     },
     birthDate: {
         type: Date,
+        required: false
 
     },
     primaryAddress: {
