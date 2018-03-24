@@ -1,6 +1,6 @@
 export default {
     isLoggedIn() {
-        if(this.isValid()) {
+        if(this.getToken()) {
             return true;
         }
         else {
