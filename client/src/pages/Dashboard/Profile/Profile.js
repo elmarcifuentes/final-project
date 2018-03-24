@@ -1,10 +1,37 @@
 import React from 'react';
 import UserAvatar from '../../../assets/img/sammy.jpeg';
+import axios from 'axios';
 
 class Profile extends React.Component {
+
+    constructor(props){
+        super(props)
+
+        this.state={
+            firstName:'',
+            lastName:'',
+            username:'',
+            address:{
+
+            },
+        };
+    }
+    
+
+    componentDidMount(){
+        console.log('componentDidMount')
+        axios.get('/user/read')
+            .then( response =>{
+                console.log(response)
+            })
+
+    }
+
+
     render() {
 
-        console.log()
+
+
         return (
             <div className="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div className="container">
