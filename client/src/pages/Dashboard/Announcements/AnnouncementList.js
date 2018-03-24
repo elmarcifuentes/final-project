@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Jason will work on this part of the announcement logic
+
 const announcement = {
     imageSrc: 'https://www.americancampus.com/Acc/files/26/2629f7b3-4dd2-4969-b82f-9347f40cd45c.jpg',
     title: 'Title',
