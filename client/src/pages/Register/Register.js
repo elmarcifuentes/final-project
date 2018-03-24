@@ -4,7 +4,8 @@ import BackImage from '../../assets/img/register-background.jpg';
 import Logo from '../../assets/img/logo.gif'
 import Avatar from '../../assets/img/kyle.jpeg';
 
-const Register = () => (
+const Register = (props) => (
+    
   <div className="main-container">
   <section className="fullwidth-split">
       <div className="container-fluid">
