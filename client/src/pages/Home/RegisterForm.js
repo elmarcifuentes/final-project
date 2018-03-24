@@ -15,6 +15,7 @@ class RegisterForm extends Component {
         this.submit = this.submit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
+
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -24,6 +25,8 @@ class RegisterForm extends Component {
             [name]: value
         });
     }
+
+
     submit(e) {
         e.preventDefault();
         axios.post("/auth/register", this.state)
@@ -35,6 +38,8 @@ class RegisterForm extends Component {
             console.error(err);
         })
     }
+
+      
     render() {
         return (
 <div className="card">

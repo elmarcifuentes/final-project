@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require('cors');
+
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -21,6 +24,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+
+app.use(cors());
 // ADD ALL ROUTES
 app.use('/auth',authRoutes);
 //app.use('/api',apiRoutes);
@@ -28,6 +33,11 @@ app.use('/',htmlRoutes);
 app.use('/user',userRoutes);
 app.use('/chat',chatRoutes);
 
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next()
+});
 
 
 // Set up promises with mongoose

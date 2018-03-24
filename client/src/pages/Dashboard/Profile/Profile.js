@@ -1,6 +1,8 @@
 import React from 'react';
 import UserAvatar from '../../../assets/img/sammy.jpeg';
-import axios from 'axios';
+const axios = require('axios');
+
+const request = require('request');
 
 class Profile extends React.Component {
 
@@ -20,19 +22,31 @@ class Profile extends React.Component {
 
     componentDidMount(){
         console.log('componentDidMount')
-        axios.get('/user/read/',{
-            params: {
-                //Hard-coded to test for ALICE user
-                userId:'5ab364ef5eef856dca42d854'
-            },
-            proxy:{
-                host:'localhost',
-                port: 3001
+
+        request.get('http://localhost:3001/user/read/userId=5ab4bbf7b1eb070cdd40f5f1', function(error, response,body){
+
+            if(error){
+                console.log(error);
             }
+
+            //console.log(response.body);
+            console.log(body);
+
+
         })
-            .then( response =>{
-                console.log(response)
-            })
+        // axios.get('https://localhost:3001/user/read/',{
+        //     params: {
+        //         //Hard-coded to test for ALICE user
+        //         userId:'5ab364ef5eef856dca42d854'
+        //     },
+        //     proxy:{
+        //         host:'localhost',
+        //         port: 3001
+        //     }
+        // })
+        //     .then( response =>{
+        //         console.log(response)
+        //     })
 
     }
 
