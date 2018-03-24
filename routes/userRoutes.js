@@ -24,7 +24,7 @@ router.post('/create',function(request,response){
         if (err){
             console.error(err);
             response.json(err)
-        } 
+        } else
 
         //else if (res HAS THE NEW USER DATA.)
         response.json(response);
