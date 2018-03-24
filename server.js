@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 //const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')
 const userRoutes = require('./routes/userRoutes')
-const authRoutes = require('./routes/authRoutes')
+const authRoutes = require('./routes/auth/auth.routes')
 const chatRoutes = require('./routes/chatRoutes')
 
 
