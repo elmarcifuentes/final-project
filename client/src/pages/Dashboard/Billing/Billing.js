@@ -2,17 +2,17 @@ import React from 'react';
 import CreditCard from './CreditCard';
 
 const Billing = () => (
-    <div class="container">
-    <div class="row mb-4">
-        <div class="col">
+    <div className="container">
+    <div className="row mb-4">
+        <div className="col">
             <h5>Payment Methods</h5>
         </div>
     </div>
     
-    <div class="row">
-        <div class="col-12">
+    <div className="row">
+        <div className="col-12">
             <form>
-                <table class="table align-items-center">
+                <table className="table align-items-center">
                     <thead>
                         <tr>
                             <th scope="col">Card Type</th>
@@ -26,7 +26,7 @@ const Billing = () => (
                         <CreditCard />
                     </tbody>
                 </table>
-                <button class="btn btn-primary">Add new card</button>
+                <button className="btn btn-primary">Add new card</button>
             </form>
         </div>
     </div>

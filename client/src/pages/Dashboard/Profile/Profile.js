@@ -90,13 +90,13 @@ class Profile extends React.Component {
                                                 <label htmlFor="first-name">First Name:
                                                     <span className="text-red">*</span>
                                                 </label>
-                                                <input className="form-control form-control-lg" type="text" name="firstName" value="Sammy" id="first-name" />
+                                                <input readOnly className="form-control form-control-lg" type="text" name="firstName" value="Sammy" id="first-name" />
                                             </div>
                                         </div>
                                         <div className="col-6">
                                             <div className="form-group">
                                                 <label htmlFor="last-name">Last Name:</label>
-                                                <input className="form-control form-control-lg" type="text" name="lastName" value="Roberts" id="last-name" />
+                                                <input readOnly className="form-control form-control-lg" type="text" name="lastName" value="Roberts" id="last-name" />
                                             </div>
                                         </div>
                                         <div className="col-12">
