@@ -150,7 +150,7 @@ router.get('/conversation/:conversationId', function(request,response){
   });
 
 
-  
+
   
   
   
@@ -194,7 +194,7 @@ router.post('/newConversation/:recipient', async function(request,response){
           console.error(err)
 
         }
-          console.log('conversation created with a conversationId: '+conversation._id)
+          console.log('conversation created with a conversationId: ' + conversation._id)
         //response.json({conversationId: conversation._id})
 
         
@@ -224,7 +224,7 @@ router.post('/newConversation/:recipient', async function(request,response){
 
     }
       
-})
+});
 
 
 
