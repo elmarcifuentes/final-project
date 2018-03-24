@@ -25,10 +25,12 @@ class RegisterForm extends Component {
         });
     }
     submit(e) {
+        console.log(this.props)
         e.preventDefault();
         axios.post("/auth/register", this.state)
         .then(resp => {
             console.log(resp);
+            console.log(this.props);
             this.props.history.push("/auth/signin");
         })
         .catch(err => {
@@ -36,6 +38,7 @@ class RegisterForm extends Component {
         })
     }
     render() {
+        console.log(this)
         return (
 <div className="card">
     <div className="card-body">
