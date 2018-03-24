@@ -1,10 +1,10 @@
-const db = require ("../../../models");
+const db = require ("../../models");
 const crypto = require ("crypto");
 const jwt = require("jsonwebtoken");
 
 
 class Authctrl {
-    static login (req, res){
+    static signin (req, res){
         let userType = ""
         // if(tenant){
         //     userType = "tenant";
@@ -75,20 +75,25 @@ class Authctrl {
         // };
 
         const user = {
+            username: req.body.username,
             firstName: req.body.firstName,
+            middleName: req.body.middleName,
             lastName: req.body.lastName,
-            address: req.body.address,
-            phoneNumber: req.body.phoneNumber,
+            birthDate: req.body.birthDate,
+            primaryAddress: req.body.primaryAddress,
+            phone: req.body.phone,
             email: req.body.email,
             salt: salt,
             hash: hash,
-            accountStatus: req.body.accountStatus
+            accountStatus: req.body.accountStatus,
+            fakeUserToken: req.body.fakeUserToken,
+            profileImage: req.body.profileImage
         };
 
         // if (tenant.accountStatus === "tenant" ){
             console.log(`I'm a ${user.accountStatus}`)
             //insert into DB
-            db.user.create(user)
+            db.User.create(user)
             .then(resp => {
                 res.json({
                     msg: `User : ${user.email} created.`
