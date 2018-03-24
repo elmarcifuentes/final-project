@@ -1,10 +1,46 @@
 import React from 'react';
 import UserAvatar from '../../../assets/img/sammy.jpeg';
+import axios from 'axios';
 
 class Profile extends React.Component {
+
+    constructor(props){
+        super(props)
+
+        this.state={
+            firstName:'',
+            lastName:'',
+            username:'',
+            address:{
+
+            },
+        };
+    }
+    
+
+    componentDidMount(){
+        console.log('componentDidMount')
+        axios.get('/user/read/',{
+            params: {
+                //Hard-coded to test for ALICE user
+                userId:'5ab364ef5eef856dca42d854'
+            },
+            proxy:{
+                host:'localhost',
+                port: 3001
+            }
+        })
+            .then( response =>{
+                console.log(response)
+            })
+
+    }
+
+
     render() {
 
-        console.log()
+
+
         return (
             <div className="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div className="container">
@@ -54,13 +90,13 @@ class Profile extends React.Component {
                                                 <label htmlFor="first-name">First Name:
                                                     <span className="text-red">*</span>
                                                 </label>
-                                                <input className="form-control form-control-lg" type="text" name="firstName" value="Sammy" id="first-name" />
+                                                <input readOnly className="form-control form-control-lg" type="text" name="firstName" value="Sammy" id="first-name" />
                                             </div>
                                         </div>
                                         <div className="col-6">
                                             <div className="form-group">
                                                 <label htmlFor="last-name">Last Name:</label>
-                                                <input className="form-control form-control-lg" type="text" name="lastName" value="Roberts" id="last-name" />
+                                                <input readOnly className="form-control form-control-lg" type="text" name="lastName" value="Roberts" id="last-name" />
                                             </div>
                                         </div>
                                         <div className="col-12">
