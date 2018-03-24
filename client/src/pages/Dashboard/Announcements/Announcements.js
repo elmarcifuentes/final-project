@@ -2,8 +2,8 @@ import React from 'react';
 import AnnouncementList from './AnnouncementList';
 
 const Announcements = () => (
-    <div class="container">
-    <ul class="row feature-list feature-list-sm">
+    <div className="container">
+    <ul className="row feature-list feature-list-sm">
         <AnnouncementList />
         <AnnouncementList />
         <AnnouncementList />

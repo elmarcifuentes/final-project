@@ -46,21 +46,21 @@ const Dashboard = () => (
             </div>
         </div>
     </section>
-    <section class="flush-with-above height-80 d-block">
-        <div class="tab-content">
+    <section className="flush-with-above height-80 d-block">
+        <div className="tab-content">
             <div className="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <Profile/>
             </div>
-            <div class="tab-pane fade" id="billing" role="tabpanel" arialabelledby="billing-tab">
+            <div className="tab-pane fade" id="billing" role="tabpanel" arialabelledby="billing-tab">
                 <Billing/>
             </div>
             <div className="tab-pane fade" id="documents" role="tabpanel" arialabelledby="documents-tab">
                 <Documents/>
             </div>
-            <div class="tab-pane fade" id="announcements" role="tabpanel" arialabelledby="announcements-tab">
+            <div className="tab-pane fade" id="announcements" role="tabpanel" arialabelledby="announcements-tab">
                 <Announcements/>
             </div>
-            <div class="tab-pane fade" id="chat" role="tabpanel" arialabelledby="chat-tab">
+            <div className="tab-pane fade" id="chat" role="tabpanel" arialabelledby="chat-tab">
                 <Chat/>
             </div>
         </div>
