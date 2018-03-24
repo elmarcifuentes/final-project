@@ -61,7 +61,8 @@ var UserSchema = new Schema({
             message: '{VALUE} is not a valid phone number!'
         }
     },
-    fakeUserToken:{},
+
+    
     salt: {
         type: String,        
         required: true
@@ -70,6 +71,10 @@ var UserSchema = new Schema({
         type: String,        
         required: true
     },
+
+    fakeUserToken:'',
+
+
 
     profileImage:''
 
