@@ -52,9 +52,18 @@ class RegisterForm extends Component {
                 <label for="exampleInputUsername">Username</label>
                 <input type="username" name="username" onChange={this.handleInputChange} className="form-control form-control-lg" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="Pick a Username" />
             </div>
+            {/* <div className="form-group">
+            <label>
+          Pick your favorite La Croix flavor:
+          <select value={this.state.accountStatus} onChange={this.handleChange}>
+            <option value="tenant">Tenant</option>
+            <option value="manager">Manager</option>
+          </select>
+        </label>
+            </div> */}
             <div className="form-group">
-                <label for="exampleInputUsername">Status</label>
-                <input type="accountStatus" name="accountStatus" onChange={this.handleInputChange} className="form-control form-control-lg" id="exampleInputStatus" aria-describedby="StatusHelp" placeholder="Tenant or Manager" />
+                <label for="exampleInputUsername">Account Status</label>
+                <input type="accountStatus" name="accountStatus" onChange={this.handleInputChange} className="form-control form-control-lg" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="Pick an Account Status" />
             </div>
             <div className="form-group">
                 <label for="exampleInputEmail">Email address</label>
