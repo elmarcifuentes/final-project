@@ -36,18 +36,21 @@ router.post('/create',function(request,response){
 
 
 //Get User information
-router.get('/read', function(req,res){
-    console.log(req.query.id)
-    var id = req.query.id;
+router.get('/read/:userId', function(req,res){
+    var userId = req.params.userId.split('=')[1];
+    console.log('userId: '+userId)
 
 
 
-    db.User.findById(id, function(err,result){
-        if(err) console.error(err);
+    db.User.findById(userId, function(err,result){
+        if(err) {
+            console.error(err);
+        }
+            
         res.json(result)
     })
 
-    console.log('get /user with ObjectId:'+req.query.id)
+    console.log('get /user with ObjectId:'+req.params.userId)
 });
 
 
