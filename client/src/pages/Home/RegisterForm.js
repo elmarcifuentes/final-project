@@ -29,7 +29,7 @@ class RegisterForm extends Component {
         axios.post("/auth/register", this.state)
         .then(resp => {
             console.log(resp);
-            this.props.history.push("/login");
+            this.props.history.push("/auth/signin");
         })
         .catch(err => {
             console.error(err);
