@@ -3,6 +3,8 @@ import UserAvatar from '../../../assets/img/sammy.jpeg';
 
 class Profile extends React.Component {
     render() {
+
+        console.log()
         return (
             <div className="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div className="container">
@@ -12,11 +14,11 @@ class Profile extends React.Component {
                                         <img alt="" src={UserAvatar} className="avatar avatar-lg mb-3 mb-md-0" />
                                         <div className="media-body">
                                             <form>
-                                                <label className="custom-file mb-2" for="file2">
+                                                <label className="custom-file mb-2" htmlFor="file2">
                                                     <input type="file" id="file2" className="custom-file-input height-0"/>
                                                     <span className="btn btn-primary"><i className="icon-upload-to-cloud">&nbsp;</i>Upload</span>
                                                 </label>
-              t                                  <div>
+                                        <div>
                                                     <small>For best results, use an image at least 256px by 256px in either .jpg or .png format</small>
                                                 </div>
                                             </form>
@@ -49,7 +51,7 @@ class Profile extends React.Component {
                                     <form className="row">
                                         <div className="col-6">
                                             <div className="form-group">
-                                                <label for="first-name">First Name:
+                                                <label htmlFor="first-name">First Name:
                                                     <span className="text-red">*</span>
                                                 </label>
                                                 <input className="form-control form-control-lg" type="text" name="firstName" value="Sammy" id="first-name" />
@@ -57,13 +59,13 @@ class Profile extends React.Component {
                                         </div>
                                         <div className="col-6">
                                             <div className="form-group">
-                                                <label for="last-name">Last Name:</label>
+                                                <label htmlFor="last-name">Last Name:</label>
                                                 <input className="form-control form-control-lg" type="text" name="lastName" value="Roberts" id="last-name" />
                                             </div>
                                         </div>
                                         <div className="col-12">
                                             <div className="form-group">
-                                                <label for="username">Username:
+                                                <label htmlFor="username">Username:
                                                     <span className="text-red">*</span>
                                                 </label>
                                                 <input className="form-control form-control-lg" type="text" name="userName" id="username" />
@@ -72,7 +74,7 @@ class Profile extends React.Component {
                                         </div>
                                         <div className="col-12">
                                             <div className="form-group">
-                                                <label for="emailaddress">Email Address:
+                                                <label htmlFor="emailaddress">Email Address:
                                                     <span className="text-red">*</span>
                                                 </label>
                                                 <input className="form-control form-control-lg" type="email" name="emailAddress" id="emailaddress" />
@@ -112,26 +114,26 @@ class Profile extends React.Component {
                                     <form className="row">
                                         <div className="col-6">
                                             <div className="form-group">
-                                                <label for="city">City:</label>
+                                                <label htmlFor="city">City:</label>
                                                 <input className="form-control form-control-lg" type="text" name="profileCity" value="Irvine" id="city" />
                                             </div>
                                         </div>
                                         <div className="col-6">
                                             <div className="form-group">
-                                                <label for="state">State:</label>
+                                                <label htmlFor="state">State:</label>
                                                 <input className="form-control form-control-lg" type="text" name="profileState" value="CA" id="state" />
                                             </div>
                                         </div>
                                         <div className="col-12">
                                             <div className="form-group">
-                                                <label for="website">Website:</label>
+                                                <label htmlFor="website">Website:</label>
                                                 <input className="form-control form-control-lg" type="text" name="profileWebsite" id="website" />
                                                 <small>This will be displayed on your public profile</small>
                                             </div>
                                         </div>
                                         <div className="col-12">
                                             <div className="form-group">
-                                                <label for="twitter">Twitter Handle:</label>
+                                                <label htmlFor="twitter">Twitter Handle:</label>
                                                 <div className="input-group input-group-lg">
                                                     <div className="input-group-prepend">
                                                         <span className="input-group-text">@</span>
@@ -142,7 +144,7 @@ class Profile extends React.Component {
                                         </div>
                                         <div className="col-12">
                                             <div className="form-group">
-                                                <label for="about-me">About me:</label>
+                                                <label htmlFor="about-me">About me:</label>
                                                 <textarea className="form-control form-control-lg" name="profileBio" rows="4" id="about-me"></textarea>
                                             </div>
                                         </div>
@@ -150,7 +152,7 @@ class Profile extends React.Component {
                                             <div className="form-group">
                                                 <div className="custom-control custom-checkbox custom-checkbox-switch">
                                                     <input type="checkbox" className="custom-control-input" name="profilePublic" id="public" />
-                                                    <label className="custom-control-label" for="public">Make my profile public</label>
+                                                    <label className="custom-control-label" htmlFor="public">Make my profile public</label>
                                                 </div>
                                             </div>
                                         </div>
