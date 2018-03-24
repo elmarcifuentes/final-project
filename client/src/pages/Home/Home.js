@@ -11,7 +11,7 @@ const Home = () => (
             <div className="col-12 col-md-6 col-lg-5 section-intro">
                 <h1 className="display-3">NewsFlash!</h1>
                 <span className="lead">
-                    Write some text here! Have Tanisha add some text for this paragrah. We are using Bootstrap 4.
+                    Make direct message yours!.
                 </span>
             </div>
             {/* Landing Page Form */}
