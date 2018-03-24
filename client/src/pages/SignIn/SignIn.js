@@ -15,11 +15,11 @@ const SignIn = () => (
                             <div className="row no-gutters justify-content-center">
                                 <form className="text-left col-lg-8">
                                     <div className="form-group">
-                                        <label for="login-email">Email Address</label>
+                                        <label htmlFor="login-email">Email Address</label>
                                         <input className="form-control form-control-lg" type="email" name="email" id="login-email" placeholder="Email Address" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="login-password">Password</label>
+                                        <label htmlFor="login-password">Password</label>
                                         <input className="form-control form-control-lg" type="password" name="password" id="login-password" placeholder="Enter a password" />
                                         <small>Forgot password? <a href="/">Reset here</a>
                                           </small>
@@ -27,7 +27,7 @@ const SignIn = () => (
                                     <div>
                                         <div className="custom-control custom-checkbox align-items-center">
                                             <input type="checkbox" className="custom-control-input" value="box-1" name="box-1" checked id="check-remember" />
-                                            <label className="custom-control-label text-small" for="check-remember">Remember me next time</label>
+                                            <label className="custom-control-label text-small" htmlFor="check-remember">Remember me next time</label>
                                         </div>
                                     </div>
                                     <div className="text-center mt-3">

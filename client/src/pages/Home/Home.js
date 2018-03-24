@@ -1,6 +1,6 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
-import Image from '../../assets/img/header.jpg'
+import Image from '../../assets/img/header.png'
 
 
 const Home = () => (

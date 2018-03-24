@@ -8,15 +8,15 @@ const announcement = {
 }
 
 const AnnouncementList = () => (
-    <li class="col-12 col-md-6 col-lg-4">
-    <div class="card">
+    <li className="col-12 col-md-6 col-lg-4">
+    <div className="card">
         <a href={announcement.url}>
-            <img class="card-img-top" src={announcement.imageSrc} alt=""/>
+            <img className="card-img-top" src={announcement.imageSrc} alt=""/>
         </a>
-        <div class="card-body">
+        <div className="card-body">
             <a href={announcement.url}>
-                <h4 class="card-title">{announcement.title.toUpperCase()}</h4>
-                <p class="card-text text-body">{announcement.description}</p>
+                <h4 className="card-title">{announcement.title.toUpperCase()}</h4>
+                <p className="card-text text-body">{announcement.description}</p>
             </a>
         </div>
         {/* <div class="card-footer card-footer-borderless d-flex justify-content-between">

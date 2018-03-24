@@ -2,7 +2,7 @@ import React from 'react';
 import RegisterForm from './RegisterForm';
 import BackImage from '../../assets/img/register-background.jpg';
 import Logo from '../../assets/img/logo.gif'
-import Avatar from '../../assets/img/avatar-register.jpg';
+import Avatar from '../../assets/img/kyle.jpeg';
 
 const Register = () => (
   <div className="main-container">
@@ -23,7 +23,7 @@ const Register = () => (
                                       <p className="mb-1">
                                           “Lorem ipsum dolor sit amet, at eam habemus consequuntur, no has brute quando expetendis. Verear officiis erroribus.”
                                       </p>
-                                      <small>Jane Doe, Property Manager</small>
+                                      <small>Kyle Kenny, Property Manager</small>
                                   </div>
                               </div>
                           </div>
