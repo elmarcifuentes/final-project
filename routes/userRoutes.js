@@ -40,6 +40,8 @@ router.get('/read/:userId', function(req,res){
     var userId = req.params.userId.split('=')[1];
     console.log('userId: '+userId)
 
+    console.log(req)
+
 
 
     db.User.findById(userId, function(err,result){
@@ -47,10 +49,10 @@ router.get('/read/:userId', function(req,res){
             console.error(err);
         }
             
-        res.json(result)
-    })
+        res.json(result);
+    });
 
-    console.log('get /user with ObjectId:'+req.params.userId)
+    console.log('get /user with ObjectId:'+userId);
 });
 
 
@@ -77,7 +79,7 @@ router.put('/update', function(req,res){
       );
 
 
-    console.log('put /user with ObjectId: '+id)
+    console.log('PUT /user with ObjectId: '+id)
 })
 
 
